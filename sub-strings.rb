@@ -1,13 +1,23 @@
 def substrings(string, dictionary)
-  # PSEUDOCODE
-  # Set a variable equal to empty hash
-  # FOR every word in the dictionary
-  #   IF word is included in string THEN
-  #     IF hash is empty THEN
-  #       Add word and freq to hash
-  #     ELSE
-  #       INCREMENT word's freq in hash
-  #     ENDIF
-  #   ENDIF
-  # ENDFOR
+  substrings_hash = {}
+  
+  dictionary.each do |word|
+    if string.include?(word)
+      if substrings_hash.has_key?(word)
+        substrings_hash[word] += 1
+      else
+        substrings_hash[word] = 1
+      end
+    end
+  end
+
+  substrings_hash
 end
+
+dictionary = [
+  "below", "down", "go", "going", "horn",
+  "how", "howdy", "it", "i", "low", "own",
+  "part", "partner", "sit"
+]
+
+p substrings("below", dictionary)
